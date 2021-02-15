@@ -4,21 +4,28 @@ import React from 'react';
 import Footer from './components/footer';
 import {Container} from 'react-bootstrap'
 import HomeScreen from './screens/homeScreen'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+import ProductScreen from './screens/productscreen'
+
 
 function App() {
   return (
     <React.Fragment>
-      <Header />
+      <Router>
+         <Header />
       <main className="py-3">
         <Container>
        
-        <HomeScreen />
+        <Route exact path="/" component={HomeScreen} />
+        <Route exact path="/product/:id" component={ProductScreen} />
       </Container>
       </main>
       
       
     
     <Footer />
+      </Router>
+     
     </React.Fragment>
     
 
