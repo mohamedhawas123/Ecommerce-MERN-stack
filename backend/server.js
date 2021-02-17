@@ -1,6 +1,13 @@
-const express = require('express')
-const products = require('./data/products')
-var cors = require('cors')
+import express from 'express'
+import cors from 'cors'
+import dotenv from 'dotenv'
+import connectDB from './config/db.js'
+
+import products from'./data/products.js'
+
+connectDB()
+
+dotenv.config()
 
 
 const app = express()
