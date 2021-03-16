@@ -6,14 +6,15 @@ import './bootstrap.min.css'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { applyMiddleware } from 'redux';
+import { createStore, combineReducers, compose  ,applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
-import { combineReducers } from 'redux';
+import productlistReducer from './store/reducer/productlist'
 
+
+const composeEnhances = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-  
+  Product: productlistReducer
 })
 
 const store = createStore(rootReducer, composeEnhances(applyMiddleware(thunk)))
