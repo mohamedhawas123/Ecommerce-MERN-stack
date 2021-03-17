@@ -3,29 +3,41 @@ import {Link} from 'react-router-dom'
 import {Row, Col, Image, ListGroup, Card, Button} from 'react-bootstrap'
 import Rating from '../components/rating'
 import axios from 'axios'
+import {productDetail} from '../store/actions/productlist'
+import { connect } from "react-redux";
 
 
-const ProductScreen = ({match}) => {
+
+const ProductScreen = (props) => {
     
-    const [product, setProduct] = useState([])
+   // const [product, setProduct] = useState([])
     
     useEffect( () => {
        
-        const fetchdata = async () => {
-            const {data} = await axios.get(`/api/products/${match.params.id}`)
-            setProduct(data)
-        }
+        // const fetchdata = async () => {
+        //     const {data} = await axios.get(`/api/products/${match.params.id}`)
+        //     setProduct(data)
+        // }
 
-        fetchdata()
-    }, [match] )
+        // fetchdata()
+
+
+        props.fetchData(props.match.params.id)
+
+
+    }, [props.match] )
+
+    const {product} = props
+    console.log(product)
 
     return (
         <React.Fragment>
             <Link className="btn btn-dark my-3" to ="/">
                 Go Back
             </Link>
-
-            <Row>
+            {
+                product ? (
+                    <Row>
                 <Col md={6}>
                 <Image src={product.image} alt={product.name} />
                 </Col>
@@ -89,10 +101,30 @@ const ProductScreen = ({match}) => {
                 </Col>
 
             </Row>
+                ): null
+            }
+            
 
 
         </React.Fragment>
     )
 }
 
-export default ProductScreen;
+const mapStateToProps = (state) => {
+    return {
+        product: state.Product.product,
+        error:state.Product.error,
+        loading: state.Product.loading
+    }
+    
+    
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchData: (id) => dispatch(productDetail(id))
+    }
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductScreen)

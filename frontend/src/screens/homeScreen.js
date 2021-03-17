@@ -4,6 +4,9 @@ import Product from '../components/product'
 import axios from 'axios'
 import { connect } from "react-redux";
 import {productList} from '../store/actions/productlist'
+import Message from '../components/Message'
+import Loader from '../components/Loader'
+
 
 
 const HomeScreen = (props) => {
@@ -22,7 +25,7 @@ const HomeScreen = (props) => {
        
         <div>
             <h1>Latest Products</h1>
-           {loading ? (<h2>Loading...</h2>): error ? (<h3>{error}</h3>) : 
+           {loading ? (<Loader />): error ? (<Message variant="danger">{error}</Message>) : 
             <Row>
                 {products.map(product => {
                     return (

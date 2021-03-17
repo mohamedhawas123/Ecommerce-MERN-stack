@@ -5,6 +5,7 @@ import * as actionTypes from '../actions/actionTypes'
 
 const initialState = {
     products : [],
+    product: {},
     error: null,
     loading: false
 }
@@ -27,6 +28,14 @@ const fetchSucess = (state, action) => {
     })
 }
 
+const fetchDetailSucess = (state, action) => {
+    return updateObject(state, {
+        product: action.product,
+        error:null,
+        loading:false
+    })
+}
+
 const fetchFail = (state, action) => {
     return updateObject(state, {
         loading: false,
@@ -34,11 +43,14 @@ const fetchFail = (state, action) => {
     })
 }
 
+
+
 const reducer = (state=initialState, action) => {
     switch(action.type){
         case actionTypes.FETCH_START: return fetchStart(state, action);
         case actionTypes.FETCH_SUCCESS: return fetchSucess(state, action)
         case actionTypes.FETCH_FAIL: return fetchFail(state, action)
+        case actionTypes.FETCH_DETAIL_SUCCESS: return fetchDetailSucess(state, action)
         default:
             return state
     }

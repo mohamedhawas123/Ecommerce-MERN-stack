@@ -16,6 +16,15 @@ const fetchSucess = (products) => {
     }
 }
 
+
+const fetchDetailSucess = (product) => {
+    return {
+        type: actionTypes.FETCH_DETAIL_SUCCESS,
+        product: product
+    }
+}
+
+
 const fetchFail = err => {
     return {
         type : actionTypes.FETCH_FAIL,
@@ -30,6 +39,24 @@ export const productList = () => {
         axios.get('/api/products')
         .then(res => {
         dispatch(fetchSucess(res.data))
+    })
+        .catch(err => {
+        dispatch(fetchFail(err))
+        
+    })
+    }
+    
+
+}
+
+
+export const productDetail = (id) => {
+    return dispatch => {
+
+        dispatch(fetchStart())
+        axios.get(`/api/products/${id}`)
+        .then(res => {
+        dispatch(fetchDetailSucess(res.data))
     })
         .catch(err => {
         dispatch(fetchFail(err))
