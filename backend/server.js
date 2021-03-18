@@ -26,4 +26,4 @@ app.use(notFound)
 
 app.use(errorHandler)
 
-app.listen(5000, console.log("it's running right now"))
+app.listen(5000, console.log("شغال يا نجم"))

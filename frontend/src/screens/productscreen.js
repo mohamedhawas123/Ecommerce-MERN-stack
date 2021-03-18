@@ -5,10 +5,12 @@ import Rating from '../components/rating'
 import axios from 'axios'
 import {productDetail} from '../store/actions/productlist'
 import { connect } from "react-redux";
-
+import Form from 'react-bootstrap/Form'
 
 
 const ProductScreen = (props) => {
+    const [qty, setQty] = useState(0)
+    
     
    // const [product, setProduct] = useState([])
     
@@ -26,6 +28,11 @@ const ProductScreen = (props) => {
 
 
     }, [props.match] )
+
+
+    const addToCartHandler = () => {
+        props.history.push(`/cart/${props.match.params.id}?qty=${qty}`)
+    }
 
     const {product} = props
     console.log(product)
@@ -88,12 +95,35 @@ const ProductScreen = (props) => {
                             </Row>
                         </ListGroup.Item>
 
-                        
 
                     </ListGroup>
 
+                    {product.countInStock > 0 && (
+                        <ListGroup.Item>
+                            <Row>
+                                <Col>Qty</Col>
+                                <Col>
+                                <Form.Control as="select" value={qty} onChange={(e) => {
+                                    setQty(e.target.value)
+                                }}>
+
+                                {
+                                    [...Array(product.countInStock).keys()].map((x) => (
+                                        <option key={x+1} value={x+1} >
+                                            {x+1}
+                                        </option>
+                                    ))
+                                }
+                                    
+                                </Form.Control>
+                                </Col>
+                            </Row>
+                        </ListGroup.Item>
+                    )}
+
+
                     <ListGroup.Item>
-                            <Button className="btn-block" type="button" disabled={product.countInStock ===0 } >
+                            <Button onClick={addToCartHandler} className="btn-block" type="button" disabled={product.countInStock ===0 } >
                                 Add To Cart
                             </Button>
                         </ListGroup.Item>
