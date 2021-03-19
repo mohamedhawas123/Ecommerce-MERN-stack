@@ -20,7 +20,6 @@ const rootReducer = combineReducers({
   cart: cartReducer
 })
 
-
 const store = createStore(rootReducer, composeEnhances(applyMiddleware(thunk)))
 
 const app = (

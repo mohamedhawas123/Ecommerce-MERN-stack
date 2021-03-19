@@ -16,10 +16,9 @@ import cartReducer from './store/reducer/cart'
 const composeEnhances = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-  Product: productlistReducer,
+  Product: productlistReducer
   cart: cartReducer
 })
-
 
 const store = createStore(rootReducer, composeEnhances(applyMiddleware(thunk)))
 
