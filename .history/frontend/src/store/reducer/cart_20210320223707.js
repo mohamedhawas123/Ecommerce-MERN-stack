@@ -3,7 +3,7 @@ import {updateObject} from '../utilty'
 
 
 const cartItemsFromStorage = localStorage.getItem("cartItems")  ? JSON.parse(localStorage.getItem("cartItems")): [] 
-console.log(localStorage)
+
 
 const initalState = {
     cartItems : [],
@@ -19,7 +19,7 @@ const addToCart = (state, action) => {
     if(existItem) {
         return {
             ...state,
-            cartItems: state.cartItems.map(e => e.product === existItem.product ? item: e)
+            cart.cartItems: state.cartItems.map(e => e.product === existItem.product ? item: e)
         }
 
     }else {

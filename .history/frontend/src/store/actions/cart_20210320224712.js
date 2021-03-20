@@ -1,4 +1,4 @@
-import React, {getState} from 'react'
+import React from 'react'
 import * as actionTypes from './actionTypes'
 import axios from 'axios'
 
@@ -14,15 +14,16 @@ const adCart = (item ) => {
 }
 
 
-export const addToCart =  (id) => {
-    return dispatch => {    
+export const addToCart =  (id, getState)  => {
+    return dispatch => {
         axios.get(`/api/products/${id}`)
         .then(res => {
             dispatch(adCart(res.data))
         })
         
     }
-    
+    console.log(getState().cartItems)
+    localStorage.setItem("cartItems", JSON.stringify(getState.cartItems))
 }
 
 

@@ -14,15 +14,13 @@ const adCart = (item ) => {
 }
 
 
-export const addToCart =  (id) => {
-    return dispatch => {    
-        axios.get(`/api/products/${id}`)
-        .then(res => {
-            dispatch(adCart(res.data))
-        })
+export const addToCart =  (id)  => {
+    return dispatch => {
+        const  {data} =   axios.get(`/api/products/${id}`)
+        dispatch(adCart(data))
         
     }
-    
+    localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems))
 }
 
 

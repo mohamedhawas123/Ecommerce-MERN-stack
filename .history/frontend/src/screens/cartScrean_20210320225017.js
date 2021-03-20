@@ -7,7 +7,7 @@ import {addToCart} from '../store/actions/cart'
 import {connect} from 'react-redux'
 
 
-const CartScrean = ({match, history, location, it}) => {
+const CartScrean = ({match, history, location}) => {
     
 
     const productId = match.params.id
@@ -18,13 +18,10 @@ const CartScrean = ({match, history, location, it}) => {
 
     useEffect( () => {
         if(productId) {
-            dispatch(addToCart(productId))
-            localStorage.setItem("cartItems", JSON.stringify( it.cart.cartItems ))
+            dispatch(addToCart(productId, qty))
         }
-        
     }, [dispatch, productId,] )
 
-    console.log(it)
 
    return (
        <div>
@@ -33,10 +30,6 @@ const CartScrean = ({match, history, location, it}) => {
    ) 
 }
 
-const mapStateToProps = (state) => {
-    return {
-        it: state
-    }
-}
+const 
 
-export default connect(mapStateToProps)(CartScrean)
+export default CartScrean

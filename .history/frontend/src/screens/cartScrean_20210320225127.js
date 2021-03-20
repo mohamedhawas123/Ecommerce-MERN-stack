@@ -18,13 +18,10 @@ const CartScrean = ({match, history, location, it}) => {
 
     useEffect( () => {
         if(productId) {
-            dispatch(addToCart(productId))
-            localStorage.setItem("cartItems", JSON.stringify( it.cart.cartItems ))
+            dispatch(addToCart(productId, it))
         }
-        
     }, [dispatch, productId,] )
 
-    console.log(it)
 
    return (
        <div>
@@ -35,7 +32,7 @@ const CartScrean = ({match, history, location, it}) => {
 
 const mapStateToProps = (state) => {
     return {
-        it: state
+        it: state.cart.cartItems
     }
 }
 

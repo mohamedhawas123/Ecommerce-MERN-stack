@@ -9,7 +9,7 @@ import Form from 'react-bootstrap/Form'
 
 
 const ProductScreen = (props) => {
-    const [qty, setQty] = useState(1)
+    const [qty, setQty] = useState(0)
     
     
    // const [product, setProduct] = useState([])

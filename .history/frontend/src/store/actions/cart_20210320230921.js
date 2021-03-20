@@ -14,7 +14,7 @@ const adCart = (item ) => {
 }
 
 
-export const addToCart =  (id) => {
+export const addToCart =  (id) => => {
     return dispatch => {    
         axios.get(`/api/products/${id}`)
         .then(res => {

@@ -3,7 +3,7 @@ import {updateObject} from '../utilty'
 
 
 const cartItemsFromStorage = localStorage.getItem("cartItems")  ? JSON.parse(localStorage.getItem("cartItems")): [] 
-console.log(localStorage)
+console.log(cartItemsFromStorage)
 
 const initalState = {
     cartItems : [],
