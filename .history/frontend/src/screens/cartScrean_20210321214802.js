@@ -15,14 +15,17 @@ const CartScrean = ({match, history, location, it}) => {
     const qty = location.search ? Number(location.search.split('=')[1]) : 1
     
     const dispatch = useDispatch()
-    const cart = useSelector(state => state.cart)
-    const {cartItems} =   cart
-    console.log(cartItems)
 
     useEffect( () => {
-        dispatch(addToCart(productId, qty ))
+        if(productId) {
+            dispatch(addToCart(productId))
+           // localStorage.setItem("cartItems", JSON.stringify( it. ))
+
+            console.log(it)
+
+        }
         
-    }, [dispatch, productId, qty ] )
+    }, [dispatch, productId,] )
 
     console.log(it)
 
@@ -40,12 +43,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(CartScrean)
-
-
-// if(productId) {
-//     dispatch(addToCart(productId))
-//     localStorage.setItem("cartItems", JSON.stringify(it.cart.cartItems))
-
-//     console.log(it.cart.cartItems)
-
-// }

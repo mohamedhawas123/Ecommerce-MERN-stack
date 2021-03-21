@@ -15,9 +15,6 @@ const CartScrean = ({match, history, location, it}) => {
     const qty = location.search ? Number(location.search.split('=')[1]) : 1
     
     const dispatch = useDispatch()
-    const cart = useSelector(state => state.cart)
-    const {cartItems} =   cart
-    console.log(cartItems)
 
     useEffect( () => {
         dispatch(addToCart(productId, qty ))
