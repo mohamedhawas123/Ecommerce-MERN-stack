@@ -22,7 +22,7 @@ const CartScrean = ({match, history, location, it}) => {
     useEffect( () => {
         dispatch(addToCart(productId, qty ))
         
-    }, [dispatch, productId, qty ] )
+    }, [dispatch, productId ] )
 
     const removeFromCartHandler = (id) => {
         console.log("removed")
@@ -80,8 +80,6 @@ const CartScrean = ({match, history, location, it}) => {
                 <ListGroup variant="flush">
                     <ListGroup.Item>
                         <h2>Subtotal ( {cartItems.reduce( (acc, cur) => acc+cur.qty, 0 )} ) item </h2>
-                        
-                        ${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2) }
 
                     </ListGroup.Item>
                 </ListGroup>

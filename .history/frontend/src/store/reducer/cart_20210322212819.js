@@ -14,12 +14,12 @@ const initalState = {
 const addToCart = (state, action) => {
     const item = action.item
     console.log(action)
-    const existItem = state.cartItems.find(x => x.product === item._id)
+    const existItem = state.cartItems.find(x => x.product === item.data._id)
     
     if(existItem) {
         return {
             ...state,
-            cartItems: state.cartItems.map(e => e.product === existItem._id ? item: e)
+            cartItems: state.cartItems.map(e => e.product === existItem.data._id ? item: e)
         }
 
     }else {
