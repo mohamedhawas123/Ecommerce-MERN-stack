@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import Message from '../components/Message'
 import {Link} from 'react-router-dom'
 import {Row, Col, ListGroup, Image, Form, Button, Card} from 'react-bootstrap'
-import {addToCart, removeFromCart} from '../store/actions/cart'
+import {addToCart} from '../store/actions/cart'
 import {connect} from 'react-redux'
 
 
@@ -22,15 +22,10 @@ const CartScrean = ({match, history, location, it}) => {
     useEffect( () => {
         dispatch(addToCart(productId, qty ))
         
-    }, [productId, qty ] )
+    }, [dispatch, productId, qty ] )
 
     const removeFromCartHandler = (id) => {
-        dispatch(removeFromCart(id))
-    }
-
-
-    const checkoutHandler = () => {
-        history.push('/login?redirect=shipping')
+        console.log("removed")
     }
 
     console.log(it)
@@ -79,7 +74,7 @@ const CartScrean = ({match, history, location, it}) => {
             )}
            </Col>
                 
-         <Col md={4}>
+            <Col md={4}>
             
             <Card>
                 <ListGroup variant="flush">

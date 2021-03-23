@@ -31,14 +31,6 @@ const addToCart = (state, action) => {
 }
 
 
-const removeFromCart = (state,action) => {
-    return {
-        ...state, 
-        cartItems: state.cartItems.filter(e => e.product !== action.payload)
-    }
-}
-
-
 const reducer = (state=initalState, action) => {
     switch(action.type) {
         case actionTypes.CART_ADD_ITEM: return addToCart(state, action)
