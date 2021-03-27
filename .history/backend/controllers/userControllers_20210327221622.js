@@ -4,7 +4,6 @@ import User from '../models/userModel.js'
 import generateToken from '../utilits/token.js'
 
 
-
 const authUser = asyncHandler(async (req, res) => {
 
     const {email, password} = req.body
@@ -17,7 +16,7 @@ const authUser = asyncHandler(async (req, res) => {
             name: user.name,
             email:user.email,
             isAdmin: user.isAdmin,
-            token: generateToken(user._id) 
+            token: null 
         })
     } else {
         res.status(401)
