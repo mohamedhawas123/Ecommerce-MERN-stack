@@ -33,13 +33,11 @@ const getUserProfile = asyncHandler(async (req, res) => {
     
     if (user) {
 
-        res.json({
-            _id: user._id,
+        _id: user._id,
             name: user.name,
             email:user.email,
             isAdmin: user.isAdmin
-        })
-        
+
     }else {
         res.status(404)
         throw new Error("USer Not Found")
