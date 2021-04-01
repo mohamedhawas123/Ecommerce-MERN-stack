@@ -83,7 +83,6 @@ const getUserProfile = asyncHandler(async (req, res) => {
 
 export {
     authUser,
-    getUserProfile,
-    registerUser
+    getUserProfile
 }
  
