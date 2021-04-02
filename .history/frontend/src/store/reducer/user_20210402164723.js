@@ -40,8 +40,6 @@ const reducer = (state =initalState, action ) => {
         case actionTypes.USER_LOGIN_START: return authStart(staet, action)
         case actionTypes.USER_LOGIN_SUCESS: return authSucess(staet, action)
         case actionTypes.USER_LOGIN_FAIL: return authFail(staet, action)
-        default:
-            return state
         
     }
 }
