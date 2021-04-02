@@ -17,8 +17,7 @@ const composeEnhances = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
   Product: productlistReducer,
-  cart: cartReducer,
-  user: userReducer
+  cart: cartReducer
 })
 
 

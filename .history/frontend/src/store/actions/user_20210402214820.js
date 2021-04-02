@@ -35,7 +35,7 @@ export const authLogin = (email, password) => {
         })
         .then(res => {
             const token = res.data.token
-            localStorage.setItem("userInfo", res.data)
+            localStorage.setItem("token", token)
             dispatch(authSucess(res.token))
         })
         .catch(err => {
@@ -58,7 +58,7 @@ export const authSignup = (name, email, password) => {
         })
         .then(res => {
             const token = res.data.token
-            localStorage.setItem("userInfo", res.data)
+            localStorage.setItem("token", token)
             dispatch(authSucess(token))
         })
         .catch(err => {

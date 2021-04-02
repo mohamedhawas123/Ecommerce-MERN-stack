@@ -9,7 +9,6 @@ const initalState= {
     
     loading: false,
     userInfo : null,
-    userLogin: {userInfo: userInfoFromStorage},
     error: null
 }
 
