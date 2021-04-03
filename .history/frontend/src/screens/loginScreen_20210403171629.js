@@ -8,27 +8,16 @@ import {authLogin} from '../store/actions/user'
 import FormContainer from '../components/formcontainer'
 
 
-const LoginScrean = ({location, history}) => {
+const LoginScrean = ({location}) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const dispatch = useDispatch()
-
-    const userLogin = useSelector(state => state.user)
-    const {loading, userInfo, error} = userLogin
 
     const redirect = location.search ? location.search.split('=')[1]: '/'
 
-    useEffect(() => {
-        if(userInfo) {
-            history.push(redirect)
-        }
-    }, [history, userInfo, redirect])
-
     const submitHandler = (e) => {
         e.preventDefault()
-        dispatch(authLogin(email, password))
     }
 
 
@@ -36,8 +25,6 @@ const LoginScrean = ({location, history}) => {
         <FormContainer>
 
         <h1>Sign In</h1>
-        {error && <Message variant="danger">{error}</Message>}
-        {loading && <Loader />}
         <Form onSubmit={submitHandler}>
             <Form.Group controlId="email">
                 <Form.Label>Email Address</Form.Label>

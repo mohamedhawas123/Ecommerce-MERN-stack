@@ -8,36 +8,15 @@ import {authLogin} from '../store/actions/user'
 import FormContainer from '../components/formcontainer'
 
 
-const LoginScrean = ({location, history}) => {
+const LoginScrean = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
-    const dispatch = useDispatch()
-
-    const userLogin = useSelector(state => state.user)
-    const {loading, userInfo, error} = userLogin
-
-    const redirect = location.search ? location.search.split('=')[1]: '/'
-
-    useEffect(() => {
-        if(userInfo) {
-            history.push(redirect)
-        }
-    }, [history, userInfo, redirect])
-
-    const submitHandler = (e) => {
-        e.preventDefault()
-        dispatch(authLogin(email, password))
-    }
-
 
     return (
         <FormContainer>
 
         <h1>Sign In</h1>
-        {error && <Message variant="danger">{error}</Message>}
-        {loading && <Loader />}
         <Form onSubmit={submitHandler}>
             <Form.Group controlId="email">
                 <Form.Label>Email Address</Form.Label>
@@ -71,14 +50,10 @@ const LoginScrean = ({location, history}) => {
 
         <Row className="py-3">
             <Col>
-            New Customer ? <Link to={redirect ? `/register/?redirect=${redirect}`: '/register'} > 
-            Regsiter
-             </Link>
+            New Customer ? <Link to={redirect ? `/register/?redirect=${redirect}`: '/register'} > Regsiter </Link>
             </Col>
         </Row>
 
         </FormContainer>
     )
 }
-
-export default LoginScrean

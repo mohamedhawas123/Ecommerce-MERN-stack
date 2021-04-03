@@ -5,13 +5,11 @@ import {updateObject} from '../utilty'
 const userInfoFromStorage = localStorage.getItem("userInfo") 
 ? JSON.parse(localStorage.getItem("userInfo")): null
 
-console.log(userInfoFromStorage)
-
 const initalState= {
     
     loading: false,
     userInfo : null,
-    userLogin: {userInfo: userInfoFromStorage},
+    userLogin: {userInfoo: userInfoFromStorage},
     error: null
 }
 
