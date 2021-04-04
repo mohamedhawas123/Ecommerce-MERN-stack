@@ -67,7 +67,7 @@ export const authSignup = (name, email, password) => {
     }
 }
 
-export const  logout = () => (dispatch) => {
+export const  logout = () => {
 
     localStorage.removeItem("userInfo")
 

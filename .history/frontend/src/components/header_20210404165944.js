@@ -2,19 +2,17 @@ import React, {Compoent} from 'react'
 import {LinkContainer} from 'react-router-bootstrap'
 import {Navbar, Nav, Container, NavDropdown} from 'react-bootstrap'
 import {useDispatch, useSelector} from 'react-redux'
-import {logout} from '../store/actions/user'
+
 
 
 const Header = () =>  {
-    
-        const dispatch =useDispatch()
 
         const userLogin = useSelector(state => state.user)
         const  {userInfo} = userLogin
 
 
         const logoutHandler = ()=> {
-            dispatch(logout())
+            console.log("Logged Out")
         }
 
         return (

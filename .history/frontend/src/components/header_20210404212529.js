@@ -14,7 +14,7 @@ const Header = () =>  {
 
 
         const logoutHandler = ()=> {
-            dispatch(logout())
+            console.log("Logged Out")
         }
 
         return (
