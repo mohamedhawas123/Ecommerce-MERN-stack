@@ -4,14 +4,17 @@ import {Form, Button, Row, Col} from 'react-bootstrap'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
-import {authLogin} from '../store/actions/user'
+import {authSignup} from '../store/actions/user'
 import FormContainer from '../components/formcontainer'
 
 
-const LoginScrean = ({location, history}) => {
+const RegisterScrean = ({location, history}) => {
 
+    const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const 
 
     const dispatch = useDispatch()
 
@@ -39,6 +42,19 @@ const LoginScrean = ({location, history}) => {
         {error && <Message variant="danger">{error}</Message>}
         {loading && <Loader />}
         <Form onSubmit={submitHandler}>
+
+        <Form.Group controlId="name">
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                 type="name"
+                  placeholder="Enter name"
+                  value={name}
+                onChange={(e)=> setEmail(e.target.value) }>
+
+                </Form.Control>
+            </Form.Group>
+
+
             <Form.Group controlId="email">
                 <Form.Label>Email Address</Form.Label>
                 <Form.Control
@@ -62,7 +78,7 @@ const LoginScrean = ({location, history}) => {
             </Form.Group>
 
             <Button type="submit" variant="primary">
-                Sign In
+                Sign UP
             </Button>
 
 
@@ -71,7 +87,7 @@ const LoginScrean = ({location, history}) => {
 
         <Row className="py-3">
             <Col>
-            New Customer ? <Link to={redirect ? `/register?redirect=${redirect}`: '/register'} > 
+            New Customer ? <Link to={redirect ? `/register/?redirect=${redirect}`: '/register'} > 
             Regsiter
              </Link>
             </Col>
@@ -81,4 +97,4 @@ const LoginScrean = ({location, history}) => {
     )
 }
 
-export default LoginScrean
+export default RegisterScrean

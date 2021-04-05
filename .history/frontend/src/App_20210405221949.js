@@ -20,7 +20,6 @@ function App() {
       <main className="py-3">
         <Container>
         <Route exact path="/login" component={LoginScrean} />
-        <Route exact path="/register" component={RegisterScrean} />
         <Route exact path="/" component={HomeScreen} />
         <Route exact path="/product/:id" component={ProductScreen} />
         <Route exact path="/cart/:id?" component={CartScrean} />
