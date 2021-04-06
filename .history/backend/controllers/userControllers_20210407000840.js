@@ -98,11 +98,11 @@ const updateUserProfile = asyncHandler(async (req, res) => {
         const updatdUser = await user.save()
 
         res.status(201).json({
-            _id: updatdUser._id,
-            name: updatdUser.name,
-            email:updatdUser.email,
-            isAdmin: updatdUser.isAdmin,
-            token: generateToken(updatdUser._id) 
+            _id: user._id,
+            name: user.name,
+            email:user.email,
+            isAdmin: user.isAdmin,
+            token: generateToken(user._id) 
         })
         
     }else {
@@ -116,7 +116,6 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 export {
     authUser,
     getUserProfile,
-    registerUser,
-    updateUserProfile
+    registerUser
 }
  

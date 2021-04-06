@@ -89,20 +89,11 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     
     if (user) {
 
-        user.name = req.body.name || user.name
-        user.email = req.body.email || user.email 
-        if(req.body.password) {
-            user.password = req.body.password
-        }
-
-        const updatdUser = await user.save()
-
-        res.status(201).json({
-            _id: updatdUser._id,
-            name: updatdUser.name,
-            email:updatdUser.email,
-            isAdmin: updatdUser.isAdmin,
-            token: generateToken(updatdUser._id) 
+        res.json({
+            _id: user._id,
+            name: user.name,
+            email:user.email,
+            isAdmin: user.isAdmin
         })
         
     }else {
@@ -116,7 +107,6 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 export {
     authUser,
     getUserProfile,
-    registerUser,
-    updateUserProfile
+    registerUser
 }
  
