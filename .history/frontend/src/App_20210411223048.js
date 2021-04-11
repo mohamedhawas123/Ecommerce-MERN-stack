@@ -21,7 +21,6 @@ function App() {
          <Header />
       <main className="py-3">
         <Container>
-        <Route exact path="/placeorder" component={PlaceOrderScrean} />
         <Route exact path="/payment" component={PaymentScrean} />
         <Route exact path="/shipping" component={ShippingAddres} />
         <Route exact path="/login" component={LoginScrean} />
