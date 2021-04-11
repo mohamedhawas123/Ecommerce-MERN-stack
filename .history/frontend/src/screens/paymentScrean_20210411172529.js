@@ -1,0 +1,100 @@
+import React, {useEffect, useState} from 'react'
+import {Form, Button, Col} from 'react-bootstrap'
+import {useDispatch, useSelector} from 'react-redux'
+import FormContainer from '../components/formcontainer'
+import {savePaymentMethod} from '../store/actions/cart'
+import CheckoutSteps from '../components/checkoutSteps'
+
+
+
+const PaymentScrean = ({history}) => {
+
+
+    const cart = useSelector(state => state.cart)
+    
+    const shippingAddress = cart.shippingAddress
+
+
+    if(!shippingAddress) {
+        history.push('/shipping')
+    }
+
+    const [paymentMethod, setPaymentMethod] = useState('PayPal')
+    
+
+    const dispatch = useDispatch()
+
+
+    
+
+    const submitHandler = (e) => {
+        e.preventDefault()
+        console.log("continue")
+        dispatch(saveShippingAddress({address, city, postelCode, country }))
+        history.push('/payment')
+    }
+
+    
+
+
+    return (
+        <FormContainer>
+            <CheckoutSteps step1 step2 />
+            <h1>Shipping</h1>
+            <Form onSubmit={submitHandler}>
+            <Form.Group controlId="Address">
+                <Form.Label>Address</Form.Label>
+                <Form.Control
+                 type="text"
+                  placeholder="Enter Address"
+                  value={address}
+                onChange={(e)=> setAddress(e.target.value) }>
+
+                </Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId="city">
+                <Form.Label>City</Form.Label>
+                <Form.Control
+                 type="text"
+                  placeholder="Enter City"
+                  value={city}
+                onChange={(e)=> setCity(e.target.value) }>
+
+                </Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId="postelCode">
+                <Form.Label>postelCode</Form.Label>
+                <Form.Control
+                 type="text"
+                  placeholder="Enter PostelCode"
+                  value={postelCode}
+                onChange={(e)=> setPostelCode(e.target.value) }>
+
+                </Form.Control>
+            </Form.Group>
+
+
+            <Form.Group controlId="country">
+                <Form.Label>Country</Form.Label>
+                <Form.Control
+                 type="text"
+                  placeholder="Enter Country"
+                  value={country}
+                onChange={(e)=> setCountry(e.target.value) }>
+
+                </Form.Control>
+            </Form.Group>
+
+            <Button type="submit" variant="primary">
+                Continue
+            </Button>
+
+
+            </Form>
+        </FormContainer>
+    )
+}
+
+export default PaymentScrean
