@@ -61,8 +61,7 @@ const getOrderSucess = (state, action) => {
 const getOrderFail = (state, action) => {
     return updateObject(state, {
         loading: false,
-        success: false, 
-        error: action.error
+        success: false
     })
 }
 
@@ -79,7 +78,7 @@ const payOrderStart = (state, action) => {
 const payOrderSucess = (state, action) => {
     return updateObject(state, {
         loading: false,
-        success: true
+        order: action.payload,
         
     })
 }
@@ -88,7 +87,7 @@ const payOrderSucess = (state, action) => {
 const payOrderFail = (state, action) => {
     return updateObject(state, {
         loading: false,
-        error: action.error
+        success: false
     })
 }
 
@@ -107,13 +106,7 @@ const  reducer = (state=initialState, action) => {
         case actionTypes.ORDER_GET_START: return getOrderStart(state, action)
         case actionTypes.ORDER_GET_SUCCESS: return getOrderSucess(state, action)
         case actionTypes.ORDER_GET_FAIL: return getOrderFail(state, action)
-
-        case actionTypes.ORDER_PAY_START: return payOrderStart(state, action)
-        case actionTypes.ORDER_PAY_SUCCESS: return payOrderSucess(state, action)
-        case actionTypes.ORDER_PAY_FAIL: return payOrderFail(state, action)
-
-        case actionTypes.ORDER_PAY_REST: 
-        return {}
+        
 
         default:
             return state

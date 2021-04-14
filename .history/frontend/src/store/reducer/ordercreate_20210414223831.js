@@ -107,13 +107,7 @@ const  reducer = (state=initialState, action) => {
         case actionTypes.ORDER_GET_START: return getOrderStart(state, action)
         case actionTypes.ORDER_GET_SUCCESS: return getOrderSucess(state, action)
         case actionTypes.ORDER_GET_FAIL: return getOrderFail(state, action)
-
-        case actionTypes.ORDER_PAY_START: return payOrderStart(state, action)
-        case actionTypes.ORDER_PAY_SUCCESS: return payOrderSucess(state, action)
-        case actionTypes.ORDER_PAY_FAIL: return payOrderFail(state, action)
-
-        case actionTypes.ORDER_PAY_REST: 
-        return {}
+        
 
         default:
             return state

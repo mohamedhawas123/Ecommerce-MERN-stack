@@ -76,7 +76,7 @@ export const getOrder = (id) => async (dispatch, getState) => {
 
 
 
-export const payOrder = (orderId, paymentResult) => async (dispatch, getState) => {
+export const payOrder = (order, paymentResult) => async (dispatch, getState) => {
 
     try {
         dispatch({
@@ -87,14 +87,13 @@ export const payOrder = (orderId, paymentResult) => async (dispatch, getState) =
     
         const config = {
             headers: {
-                "Content-Type": "application/json",
                 Authorization : `Bearer ${getState().user.userInfo.token}`
             }
         }
 
         console.log(getState().user.userInfo.token)
     
-        const {data} = await axios.put(`/api/orders/${orderId}/pay`, paymentResult  ,config)
+        const {data} = await axios.get(`/api/orders/${id}`, config)
     
         dispatch({
             type: actionTypes.ORDER_PAY_SUCCESS,

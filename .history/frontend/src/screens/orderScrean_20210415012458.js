@@ -58,7 +58,6 @@ const OrderScrean = ({match}) => {
 
        
         if(!order || success) {
-            dispatch({type: ORDER_PAY_REST })
             dispatch(getOrder(orderId))
         } else if(!order.isPaid) {
             if(!window.paypal) {
