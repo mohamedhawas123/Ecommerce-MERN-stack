@@ -1,0 +1,24 @@
+orders: [
+      {
+        shippingAddress: {
+          address: 'dfsd44D34',
+          city: 'egypt',
+          postelcode: '175',
+          country: 'Egypt'
+        },
+        taxPrice: 139.5,
+        shippingPrice: 100,
+        totalPrice: 1169.49,
+        isPaid: false,
+        isDelivered: false,
+        _id: '607c15ea8a23204acb70a0f3',
+        orderItems: [
+          {
+            _id: '607c15ea8a23204acb70a0f4',
+            product: '604e6306bd6c3b291ed12fae',
+            name: 'Cannon EOS 80D DSLR Camera',
+            image: '/images/camera.jpg',
+            price: 929.99,
+            qty: 1
+          }
+        ],
