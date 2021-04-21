@@ -20,7 +20,7 @@ const UserListScrean = ({history}) => {
 
 
     const userDelete = useSelector((state) => state.user)
-    const {success} = userDelete
+    const {success: successDelete} = userDelete
 
 
     useEffect( () => {

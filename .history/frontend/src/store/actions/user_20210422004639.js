@@ -228,7 +228,7 @@ export const deleteUser = (id) =>  async (dispatch, getState) => {
 
         console.log(data)
     
-         dispatch({
+        dispatch({
             type:actionTypes.USER_DELETE_SUCCESS,
             payload: data
         })

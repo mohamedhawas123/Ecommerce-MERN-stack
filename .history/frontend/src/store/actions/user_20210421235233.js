@@ -205,48 +205,6 @@ export const listUser = () =>  async (dispatch, getState) => {
 }
 
 
-export const deleteUser = (id) =>  async (dispatch, getState) => {
-    
-    try {
-        dispatch({
-            type: actionTypes.USER_DELETE_REQUEST
-        })
-    
-        
-    
-        const config = {
-            headers: {
-            
-                Authorization: `Bearer ${getState().user.userInfo.token}`
-            },
-        }
-    
-        const {data} = await axios.delete(
-            `/api/users/${id}`,
-            config
-        )
-
-        console.log(data)
-    
-         dispatch({
-            type:actionTypes.USER_DELETE_SUCCESS,
-            payload: data
-        })
-    
-    } catch (error) {
-        dispatch({
-            type: actionTypes.USER_DELETE_FAIL,
-            error: error
-        })
-
-        console.log(error)
-
-    }
-    
-
-}
-
-
 
 
 // try {

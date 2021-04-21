@@ -20,7 +20,7 @@ const UserListScrean = ({history}) => {
 
 
     const userDelete = useSelector((state) => state.user)
-    const {success} = userDelete
+    const {success: successDelete} = userDelete
 
 
     useEffect( () => {
@@ -30,14 +30,12 @@ const UserListScrean = ({history}) => {
             history.push('/login ')
         }
         
-    }, [dispatch, history, success])
+    }, [dispatch, history, successDelete])
 
 
     const deleteHandlee = (id) => {
-        if(window.confirm("Are you sure")) {
-            dispatch(deleteUser(id))
-        }
         
+        dispatch(deleteUser(id))
     }
 
     return (

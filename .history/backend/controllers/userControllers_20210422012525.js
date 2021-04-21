@@ -136,7 +136,7 @@ const deleteUser = asyncHandler(async (req, res) => {
 })
 
 
-const editUser = asyncHandler(async (req, res) => {
+const getUsers = asyncHandler(async (req, res) => {
     const user = await User.findById(req.params.id).select('-password')
     if (user) {
 

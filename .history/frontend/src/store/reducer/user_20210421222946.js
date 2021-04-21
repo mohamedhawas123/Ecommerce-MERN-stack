@@ -9,7 +9,7 @@ console.log(userInfoFromStorage)
 
 const initalState= {
     
-    loading: false,
+    loading: true,
     userInfo : null,
     userLogin: {userInfo: userInfoFromStorage},
     userDetail: null,
@@ -84,13 +84,7 @@ const reducer = (state =initalState, action ) => {
         case actionTypes.USER_LIST_REQUEST: return userListStart(state, action)
         case actionTypes.USER_SUCESS_REQUEST: return userListSucess(state, action)
         case actionTypes.USER_FAIL_REQUEST : return userListFail(state, action)
-        case actionTypes.USER_LIST_REST : return {users:[]}
 
-        case actionTypes.USER_DELETE_REQUEST: return {...state,  loading: true}
-        case actionTypes.USER_DELETE_SUCCESS: return {loading: false, success: true}
-        case actionTypes.USER_DELETE_FAIL : return {loading: false, error: action.error}
-        
-        
 
         default:
             return state

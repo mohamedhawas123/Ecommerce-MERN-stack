@@ -4,41 +4,20 @@ import {useDispatch, useSelector} from 'react-redux'
 import Message from '../components/Message'
 import {Link} from 'react-router-dom'
 import Loader  from '../components/Loader'
-import {listUser, deleteUser} from '../store/actions/user'
-import {LinkContainer} from 'react-router-bootstrap'
+import {listUser} from '../store/actions/user'
 
 
-const UserListScrean = ({history}) => {
+const userListScrean = () => {
 
     const dispatch = useDispatch()
 
     const userList = useSelector(state => state.user)
     const {loading, error, users} = userList
 
-    const userLogin = useSelector( (state) => state.user )
-    const {userInfo} = userLogin
-
-
-    const userDelete = useSelector((state) => state.user)
-    const {success} = userDelete
-
 
     useEffect( () => {
-        if(userInfo && userInfo.isAdmin) {
-            dispatch(listUser())
-        }else {
-            history.push('/login ')
-        }
-        
-    }, [dispatch, history, success])
-
-
-    const deleteHandlee = (id) => {
-        if(window.confirm("Are you sure")) {
-            dispatch(deleteUser(id))
-        }
-        
-    }
+        dispatch(listUser())
+    }, [dispatch])
 
     return (
         <div>
@@ -79,7 +58,7 @@ const UserListScrean = ({history}) => {
                                     </LinkContainer>
 
                                         <Button variant="danger" className="btn-sm"
-                                        onClick={() => deleteHandlee(user._id)}>
+                                        onClick={() => deleteHandle(user._id)}>
                                             <i className="fas fa-trash"></i>
                                             </Button>
 
@@ -94,5 +73,3 @@ const UserListScrean = ({history}) => {
         </div>
     )
 }
-
-export default UserListScrean
