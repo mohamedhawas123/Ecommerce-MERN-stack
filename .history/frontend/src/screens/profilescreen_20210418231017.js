@@ -32,7 +32,7 @@ const ProfileScrean = ({location, history}) => {
     
     const userLogin = useSelector(state => state.user)
    
-    // const token = userLogin.userInfo.token 
+    const token = userLogin.userInfo.token 
     const {userInfo, loading, error,  } = userLogin
 
     
@@ -50,7 +50,7 @@ const ProfileScrean = ({location, history}) => {
 
     const submitHandlerr = (e) => {
         e.preventDefault()
-        dispatch(updateUserProfile(namee, emaill, userLogin.userInfo.token ))
+        //dispatch(updateUserProfile(namee, emaill, userLogin.userInfo.token ))
         console.log("works")
         
        

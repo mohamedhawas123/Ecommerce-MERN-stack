@@ -7,7 +7,7 @@ const router = express.Router()
 
 router.route('/').post(registerUser)
 router.post('/login', authUser)
-router.route('/').get(protect, admin, getUsers)
+router.route('/').get(protect, getUsers)
 router.route('/profile').get(protect, getUserProfile).put(protect, updateUserProfile)
 
 

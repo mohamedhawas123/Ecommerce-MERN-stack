@@ -32,7 +32,7 @@ const ProfileScrean = ({location, history}) => {
     
     const userLogin = useSelector(state => state.user)
    
-    // const token = userLogin.userInfo.token 
+    const token = userLogin.userInfo.token 
     const {userInfo, loading, error,  } = userLogin
 
     

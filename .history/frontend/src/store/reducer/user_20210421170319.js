@@ -9,7 +9,7 @@ console.log(userInfoFromStorage)
 
 const initalState= {
     
-    loading: true,
+    loading: false,
     userInfo : null,
     userLogin: {userInfo: userInfoFromStorage},
     userDetail: null,
@@ -43,29 +43,6 @@ const authFail = (state, action) => {
     })
 }
 
-const userListStart = () => {
-    return updateObject(state, {
-        loading: true,
-        error: null
-    })
-}
-
-
-const userListSucess = () => {
-    return updateObject(state, {
-        loading: false,
-        users: action.payload
-    })
-}
-
-
-const userListFail = () => {
-    return updateObject(state, {
-        loading: false,
-        error: action.error
-    })
-}
-
 
 const reducer = (state =initalState, action ) => {
     switch(action.type) {
@@ -80,11 +57,6 @@ const reducer = (state =initalState, action ) => {
         case actionTypes.USER_PROFILE_UPDATE_START: return {loading: true}
         case actionTypes.USER_PROFILE_UPDATE_SUCESS: return {loading: false, success: true ,userInfo:action.payload }
         case actionTypes.USER_PROFILE_UPDATE_FAIL : return {loading: false, error: action.error}
-        
-        case actionTypes.USER_LIST_REQUEST: return userListStart(state, action)
-        case actionTypes.USER_SUCESS_REQUEST: return userListSucess(state, action)
-        case actionTypes.USER_FAIL_REQUEST : return userListFail(state, action)
-
 
         default:
             return state

@@ -32,7 +32,7 @@ const ProfileScrean = ({location, history}) => {
     
     const userLogin = useSelector(state => state.user)
    
-    // const token = userLogin.userInfo.token 
+    const token = userLogin.userInfo.token 
     const {userInfo, loading, error,  } = userLogin
 
     
@@ -48,9 +48,9 @@ const ProfileScrean = ({location, history}) => {
         setEmail(email)
     }, [dispatch, history, userInfo, name, email])
 
-    const submitHandlerr = (e) => {
+    const submitHandler = (e) => {
         e.preventDefault()
-        dispatch(updateUserProfile(namee, emaill, userLogin.userInfo.token ))
+        //dispatch(updateUserProfile(namee, emaill, userLogin.userInfo.token ))
         console.log("works")
         
        
@@ -67,7 +67,7 @@ const ProfileScrean = ({location, history}) => {
         {error && <Message variant="danger">{error}</Message>}
         {Sucess && <Message variant="success">Profile Updated</Message>}
         {loading && <Loader />}
-        <Form onSubmit={submitHandlerr}  >
+        <Form  >
 
         <Form.Group controlId="name">
                 <Form.Label>Name</Form.Label>
@@ -103,7 +103,7 @@ const ProfileScrean = ({location, history}) => {
                 </Form.Control>
             </Form.Group>
 
-            <Button type="submit"  variant="primary">
+            <Button type="submit" onSubmit={submitHandler}  variant="primary">
                 Update
             </Button>
             

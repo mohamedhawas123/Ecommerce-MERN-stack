@@ -83,7 +83,7 @@ const reducer = (state =initalState, action ) => {
         
         case actionTypes.USER_LIST_REQUEST: return userListStart(state, action)
         case actionTypes.USER_SUCESS_REQUEST: return userListSucess(state, action)
-        case actionTypes.USER_FAIL_REQUEST : return userListFail(state, action)
+        case actionTypes.USER_FAIL_REQUEST : return userListFail
 
 
         default:
