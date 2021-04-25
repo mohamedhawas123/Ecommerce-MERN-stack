@@ -78,8 +78,7 @@ const ProductListScrean = ({history, match}) => {
                     </thead>
 
                     <tbody>
-                        
-                        {products && products.map(product => (
+                        {products.map(product => (
                             <tr key={product._id}>
                                 <td>{product.name}</td>
                                 <td>

@@ -101,7 +101,7 @@ export const deleteProduct = (id) => async(dispatch, getState) => {
 export const createProduct = (id) => async(dispatch, getState) => {
     try {
         dispatch({
-            type: actionTypes.PRODUCT_CREATE_REQUEST
+            type: actionTypes.PRODUCT_DELETE_REQUEST
         })
 
         const config = {
@@ -111,17 +111,16 @@ export const createProduct = (id) => async(dispatch, getState) => {
             },
         }
 
-        const {data} = await axios.post(`/api/products/${id}`, {} ,config)
+        await axios.delete(`/api/products/${id}`, config)
 
         dispatch({
-            type: actionTypes.PRODUCT_CREATE_SUCCESS,
-            payload: data
+            type: actionTypes.PRODUCT_DELETE_SUCCESS
             
         })
 
     }catch(error) {
         dispatch({
-            type:actionTypes.PRODUCT_CREATE_FAIL,
+            type:actionTypes.PRODUCT_DELETE_FAIL,
             payload:error
         })
         console.log(error)

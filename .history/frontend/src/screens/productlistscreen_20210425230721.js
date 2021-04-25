@@ -20,8 +20,6 @@ const ProductListScrean = ({history, match}) => {
     const {userInfo} = userLogin
 
 
-    const getSucess= useSelector((state) => state.Product)
-    const {success, loading: loadingDelete, error: errorDelete} = getSucess
 
 
     useEffect( () => {
@@ -31,13 +29,12 @@ const ProductListScrean = ({history, match}) => {
             history.push('/login ')
         }
         
-    }, [dispatch, history,userInfo, success ])
+    }, [dispatch, history,userInfo ])
 
 
     const deleteHandlee = (id) => {
         if(window.confirm("Are you sure")) {
-            dispatch(deleteProduct(id))
-            
+            dispatch(deleteProduct(match.params.id))
         }
         
     }
@@ -61,9 +58,6 @@ const ProductListScrean = ({history, match}) => {
                 </Col>
             </Row>
 
-            {loadingDelete && <Loader />}
-            {errorDelete && <Message variant="danger">{errorDelete}</Message>}
-
 
             {loading ? <Loader />: error ? <Message variant="danger">{error}</Message>: (
                 <Table striped bordered hover responsive className="table-sm">
@@ -78,8 +72,7 @@ const ProductListScrean = ({history, match}) => {
                     </thead>
 
                     <tbody>
-                        
-                        {products && products.map(product => (
+                        {products.map(product => (
                             <tr key={product._id}>
                                 <td>{product.name}</td>
                                 <td>

@@ -78,38 +78,40 @@ const ProductListScrean = ({history, match}) => {
                     </thead>
 
                     <tbody>
-                        
-                        {products && products.map(product => (
-                            <tr key={product._id}>
-                                <td>{product.name}</td>
-                                <td>
-                                    $ {product.price}
-                                </td>
-                                
-                                <td>
-                                    {product.category}
-                                </td>
-
-                                <td>{product.brand}</td>
-
-                                <td>
-                                    <LinkContainer to={`admin/product/${product._id}/edit/`}>
-                                        <Button variant="light" className="btn-sm">
-                                            <i className="fas fa-edit"></i>
-                                        </Button>
-                                    </LinkContainer>
-
+                        {products !== null ? (
+                            {products.map(product => (
+                                <tr key={product._id}>
+                                    <td>{product.name}</td>
+                                    <td>
+                                        $ {product.price}
+                                    </td>
                                     
-
-                                        <Button variant="danger" className="btn-sm"
-                                        onClick={() => deleteHandlee(product._id)}>
-                                            <i className="fas fa-trash"></i>
+                                    <td>
+                                        {product.category}
+                                    </td>
+    
+                                    <td>{product.brand}</td>
+    
+                                    <td>
+                                        <LinkContainer to={`admin/product/${product._id}/edit/`}>
+                                            <Button variant="light" className="btn-sm">
+                                                <i className="fas fa-edit"></i>
                                             </Button>
-
-                                </td>
-
-                            </tr>
-                        ))}
+                                        </LinkContainer>
+    
+                                        
+    
+                                            <Button variant="danger" className="btn-sm"
+                                            onClick={() => deleteHandlee(product._id)}>
+                                                <i className="fas fa-trash"></i>
+                                                </Button>
+    
+                                    </td>
+    
+                                </tr>
+                            ))}
+                        ):(<Loader />) }
+                        
                     </tbody>
 
                 </Table>

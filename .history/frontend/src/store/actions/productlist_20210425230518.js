@@ -93,37 +93,5 @@ export const deleteProduct = (id) => async(dispatch, getState) => {
             type:actionTypes.PRODUCT_DELETE_FAIL,
             payload:error
         })
-        console.log(error)
-    }
-}
-
-
-export const createProduct = (id) => async(dispatch, getState) => {
-    try {
-        dispatch({
-            type: actionTypes.PRODUCT_CREATE_REQUEST
-        })
-
-        const config = {
-            headers: {
-            
-                Authorization: `Bearer ${getState().user.userInfo.token}`
-            },
-        }
-
-        const {data} = await axios.post(`/api/products/${id}`, {} ,config)
-
-        dispatch({
-            type: actionTypes.PRODUCT_CREATE_SUCCESS,
-            payload: data
-            
-        })
-
-    }catch(error) {
-        dispatch({
-            type:actionTypes.PRODUCT_CREATE_FAIL,
-            payload:error
-        })
-        console.log(error)
     }
 }

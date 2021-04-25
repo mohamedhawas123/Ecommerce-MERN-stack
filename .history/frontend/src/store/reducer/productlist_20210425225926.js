@@ -7,8 +7,7 @@ const initialState = {
     products : [],
     product: {},
     error: null,
-    loading: false,
-    success: false
+    loading: false
 }
 
 
@@ -53,15 +52,10 @@ const reducer = (state=initialState, action) => {
         case actionTypes.FETCH_FAIL: return fetchFail(state, action)
         case actionTypes.FETCH_DETAIL_SUCCESS: return fetchDetailSucess(state, action)
         
-        case actionTypes.PRODUCT_DELETE_REQUEST: return {loading: true} 
-        case actionTypes.PRODUCT_DELETE_SUCCESS : return {loading: false, success: true}
-        case actionTypes.PRODUCT_DELETE_FAIL: return {loading:false, error:action.payload}
+        case actionTypes.PRODUCT_DELETE_REQUEST: return 
+        case actionTypes.PRODUCT_DELETE_SUCCESS : return 
+        case actionTypes.PRODUCT_DELETE_FAIL: return 
         
-        case actionTypes.PRODUCT_CREATE_REQUEST: return {loading: true} 
-        case actionTypes.PRODUCT_CREATE_SUCCESS : return {loading: false, product: action.payload}
-        case actionTypes.PRODUCT_CREATE_FAIL: return {loading:false, error:action.payload}
-        case actionTypes.PRODUCT_CREATE_REST: return {}
-
         default:
             return state
     }
