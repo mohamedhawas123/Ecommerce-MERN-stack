@@ -98,7 +98,7 @@ const ProductEditScreen = ({match, history}) => {
                     'Content-Type': 'multipart/form-data'
                 }
             }
-            const {data} = await axios.post('/api/upload', formData, config)
+            const {data} = await axios.post('/api/upload', formData. config)
             console.log(data)
 
             setImage(data)
@@ -112,7 +112,6 @@ const ProductEditScreen = ({match, history}) => {
         } 
     }
 
-   
 
     return (
 
@@ -164,7 +163,7 @@ const ProductEditScreen = ({match, history}) => {
                      id="image-file"
                       label="Choose File"
                       custom
-                      onChange = {uploadFileHandle}></Form.File>
+                      onchange= {uploadFileHandle}></Form.File>
 
                       {uploading && <Loader />}
 

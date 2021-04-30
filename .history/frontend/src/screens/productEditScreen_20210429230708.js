@@ -164,7 +164,7 @@ const ProductEditScreen = ({match, history}) => {
                      id="image-file"
                       label="Choose File"
                       custom
-                      onChange = {uploadFileHandle}></Form.File>
+                      onchange= {() => console.log("er")}></Form.File>
 
                       {uploading && <Loader />}
 

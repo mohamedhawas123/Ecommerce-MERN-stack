@@ -6,9 +6,8 @@ import colors from 'colors'
 import productRoutes from './routes/productRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
-import uploadRoutes from './routes/uploadRoutes.js'
+import uploadRoutes from './routes/userRoutes.js'
 import {notFound, errorHandler} from './middleware/errorMiddleware.js'
-import path from 'path'
 
 
 connectDB()
@@ -32,9 +31,7 @@ app.use('/api/orders', orderRoutes)
 app.use('/api/upload',  uploadRoutes)
 
 
-const __dirname = path.resolve()
-
-app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
+app.use('/uploads', express.static())
 
 
 app.get('/api/config/paypal', (req, res) => res.send(process.env.PAYPAL_CLIENT_ID))

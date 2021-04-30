@@ -86,33 +86,6 @@ const ProductEditScreen = ({match, history}) => {
  
     }
 
-    const uploadFileHandle = async (e) =>  {
-        const file  =  e.target.files[0]
-        const formData = new FormData()
-        formData.append('image', file)
-        setUploading(true)
-
-        try {
-            const config = {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            }
-            const {data} = await axios.post('/api/upload', formData, config)
-            console.log(data)
-
-            setImage(data)
-            setUploading(false)
-
-        }catch(error) {
-            console.log(error)
-            setUploading(false)
-
-
-        } 
-    }
-
-   
 
     return (
 
@@ -158,16 +131,8 @@ const ProductEditScreen = ({match, history}) => {
                       placeholder="Enter Image Url"
                       value={image}
                     onChange={(e)=> setImage(e.target.value) }>
+    
                     </Form.Control>
-
-                    <Form.File
-                     id="image-file"
-                      label="Choose File"
-                      custom
-                      onChange = {uploadFileHandle}></Form.File>
-
-                      {uploading && <Loader />}
-
                 </Form.Group>
 
 
