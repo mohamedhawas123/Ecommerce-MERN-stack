@@ -67,7 +67,7 @@ const ProductScreen = (props) => {
         }))
     }
 
-    console.log(Comment)
+    console.log(comment)
 
     return (
         <React.Fragment>

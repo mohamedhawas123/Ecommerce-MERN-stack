@@ -14,7 +14,7 @@ import Message from '../components/Message'
 const ProductScreen = (props) => {
     const [qty, setQty] = useState(1)
     const [rating, setRating] = useState(0)
-    const [Comment, setComment] = useState('')
+    const [comment, setComment] = useState('')
 
     const productReviewCreate = useSelector(state => state.Product)
     const{success: successReview, loading:loadingReview, error: errorReview} = productReviewCreate
@@ -23,9 +23,6 @@ const ProductScreen = (props) => {
     const {userInfo} = userLogin
     
     const dispatch = useDispatch()
-
-    const {product} = props
-    console.log(product)
     
    // const [product, setProduct] = useState([])
     
@@ -49,25 +46,23 @@ const ProductScreen = (props) => {
         props.fetchData(props.match.params.id)
 
 
-    }, [dispatch, props.match, successReview] )
+    }, [props.match, dispatch, successReview] )
 
 
     const addToCartHandler = () => {
         props.history.push(`/cart/${props.match.params.id}?qty=${qty}`)
     }
 
-    
+    const {product} = props
+    console.log(product)
 
     const submitHandler = (e) => {
         e.preventDefault()
-        console.log()
-        dispatch(createproductReview(props.match.params.id, {
+        dispatch(createproductReview(props.match.id, {
             rating, 
-            Comment
+            comment
         }))
     }
-
-    console.log(Comment)
 
     return (
         <React.Fragment>
@@ -205,7 +200,7 @@ const ProductScreen = (props) => {
                                     <Form.Group controlId="comment">
                                             <Form.Label>Comment</Form.Label>
                                             <Form.Control as="textarea" row='3'
-                                            value={Comment}
+                                            value={comment}
                                             onChange={(e) => setComment(e.target.value)}>
                                                 
                                             </Form.Control>

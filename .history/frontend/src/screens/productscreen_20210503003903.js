@@ -14,7 +14,7 @@ import Message from '../components/Message'
 const ProductScreen = (props) => {
     const [qty, setQty] = useState(1)
     const [rating, setRating] = useState(0)
-    const [Comment, setComment] = useState('')
+    const [comment, setComment] = useState('')
 
     const productReviewCreate = useSelector(state => state.Product)
     const{success: successReview, loading:loadingReview, error: errorReview} = productReviewCreate
@@ -22,21 +22,10 @@ const ProductScreen = (props) => {
     const userLogin = useSelector( (state) => state.user )
     const {userInfo} = userLogin
     
-    const dispatch = useDispatch()
-
-    const {product} = props
-    console.log(product)
     
    // const [product, setProduct] = useState([])
     
     useEffect( () => {
-
-        if(successReview) {
-            alert("Review Submitted !")
-            setRating(0)
-            setComment('')
-            dispatch({type: PRODUCT_UPDATE_REVIEW_REST})
-        }
        
         // const fetchdata = async () => {
         //     const {data} = await axios.get(`/api/products/${match.params.id}`)
@@ -49,25 +38,15 @@ const ProductScreen = (props) => {
         props.fetchData(props.match.params.id)
 
 
-    }, [dispatch, props.match, successReview] )
+    }, [props.match] )
 
 
     const addToCartHandler = () => {
         props.history.push(`/cart/${props.match.params.id}?qty=${qty}`)
     }
 
-    
-
-    const submitHandler = (e) => {
-        e.preventDefault()
-        console.log()
-        dispatch(createproductReview(props.match.params.id, {
-            rating, 
-            Comment
-        }))
-    }
-
-    console.log(Comment)
+    const {product} = props
+    console.log(product)
 
     return (
         <React.Fragment>
@@ -187,7 +166,7 @@ const ProductScreen = (props) => {
                             {
                             userInfo ? 
                             (
-                                <Form onSubmit={submitHandler}>
+                                <Form >
                                     <Form.Group controlId="rating" >
                                         <Form.Label>Rating</Form.Label>
                                         <Form.Control as="select" value={rating}
@@ -205,7 +184,7 @@ const ProductScreen = (props) => {
                                     <Form.Group controlId="comment">
                                             <Form.Label>Comment</Form.Label>
                                             <Form.Control as="textarea" row='3'
-                                            value={Comment}
+                                            value={comment}
                                             onChange={(e) => setComment(e.target.value)}>
                                                 
                                             </Form.Control>
