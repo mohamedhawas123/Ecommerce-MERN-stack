@@ -3,13 +3,20 @@ import {Link} from 'react-router-dom'
 import {Row, Col, Image, ListGroup, Card, Button} from 'react-bootstrap'
 import Rating from '../components/rating'
 import axios from 'axios'
-import {productDetail} from '../store/actions/productlist'
+import {productDetail, createproductReview} from '../store/actions/productlist'
 import { connect } from "react-redux";
 import Form from 'react-bootstrap/Form'
+import {PRODUCT_UPDATE_REVIEW_REST} from '../store/actions/actionTypes'
+import {useDispatch, useSelector} from 'react-redux'
+
 
 
 const ProductScreen = (props) => {
-    const [qty, setQty] = useState(0)
+    const [qty, setQty] = useState(1)
+    const [rating, setRating] = useState(0)
+    const [comment, setComment] = useState('')
+
+    const
     
     
    // const [product, setProduct] = useState([])

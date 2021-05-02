@@ -7,7 +7,7 @@ const router = express.Router()
 
 //router.route('/').get(getProducts)
 router.route('/').get(getProducts).post(protect, admin, createProduct) 
-router.route('/:id/reviews').post(protect, createProductReview)
+router.route('/:id/reviews').post(createProductReview)
 
 router.route('/:id')
     .get(getProductById )

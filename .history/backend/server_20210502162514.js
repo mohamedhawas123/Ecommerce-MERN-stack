@@ -18,11 +18,6 @@ dotenv.config()
 
 const app = express()
 
-if(process.env.NODE === 'development') {
-    app.use(morgan('dev'))
-}
-
-
 app.use(express.json())
 
 app.use(cors())

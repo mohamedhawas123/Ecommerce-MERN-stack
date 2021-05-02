@@ -90,7 +90,7 @@ const updateProduct = asyncHandler(async (req, res) => {
 
 const createProductReview = asyncHandler(async (req, res) => {
     
-    const {rating, Comment} = req.body
+    const {rating, comment} = req.body
 
     const product = await Product.findById(req.params.id)
     if(product) {
@@ -102,7 +102,7 @@ const createProductReview = asyncHandler(async (req, res) => {
             throw new Error("Product already reviewd")
         }
 
-        const review = {
+        const  review = {
             name: req.user.name,
             rating: Number(rating),
             Comment,
@@ -110,8 +110,7 @@ const createProductReview = asyncHandler(async (req, res) => {
         }
 
         product.review.push(review)
-        product.numRefviews = product.review.length
-        console.log(product.numRefviews)
+        product.numRefviews = product.numRefviews.length
 
         product.rating = product.review.reduce((acc, item) => acc + item.rating, 0) / product.review.length
 

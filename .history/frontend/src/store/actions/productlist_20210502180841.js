@@ -193,7 +193,7 @@ export const createproductReview = (productId, review) => async(dispatch, getSta
             },
         }
 
-        const {data} = await axios.post(`/api/products/${productId}/reviews`, review ,config)
+        const {data} = await axios.put(`/api/products/${product._id}`, product ,config)
 
         dispatch({
             type: actionTypes.PRODUCT_UPDATE_REVIEW_SUCCESS,

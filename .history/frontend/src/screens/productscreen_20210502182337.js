@@ -6,21 +6,10 @@ import axios from 'axios'
 import {productDetail, createproductReview} from '../store/actions/productlist'
 import { connect } from "react-redux";
 import Form from 'react-bootstrap/Form'
-import {PRODUCT_UPDATE_REVIEW_REST} from '../store/actions/actionTypes'
-import {useDispatch, useSelector} from 'react-redux'
-
 
 
 const ProductScreen = (props) => {
     const [qty, setQty] = useState(1)
-    const [rating, setRating] = useState(0)
-    const [comment, setComment] = useState('')
-
-    const productReviewCreate = useState(state => state.Product)
-    const{success: successReview, loading:loadingReview, error: errorReview}
-
-    const userLogin = useSelector( (state) => state.user )
-    const {userInfo} = userLogin
     
     
    // const [product, setProduct] = useState([])

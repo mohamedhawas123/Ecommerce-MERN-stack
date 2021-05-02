@@ -110,7 +110,7 @@ const createProductReview = asyncHandler(async (req, res) => {
         }
 
         product.review.push(review)
-        product.numRefviews = product.review.length
+        product.numRefviews = product.numRefviews.length
         console.log(product.numRefviews)
 
         product.rating = product.review.reduce((acc, item) => acc + item.rating, 0) / product.review.length
