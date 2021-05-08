@@ -219,7 +219,7 @@ export const listtopProduct = () => async ( dispatch ) => {
         type:actionTypes.PRODUCT_TOP_REQUEST
     })
 
-    const {data} = await axios.get(`/api/products/top`)
+    const {data} = axios.get(`/api/products/top`)
 
     dispatch({
         type:actionTypes.PRODUCT_TOP_SUCCESS,

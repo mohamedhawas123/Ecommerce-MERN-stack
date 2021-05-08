@@ -7,7 +7,7 @@ import express from 'express'
 
 const getProducts = asyncHandler(async (req, res) => {
 
-    const pageSize = 8
+    const pageSize = 2
     const page = Number(req.query.pageNumber) || 1
 
 

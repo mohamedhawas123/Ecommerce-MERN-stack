@@ -9,8 +9,6 @@ import Loader from '../components/Loader'
 import {useDispatch, useSelector} from 'react-redux'
 import Paginate from '../components/pageinate'
 import ProductCarsouel from '../components/topproductcursol'
-import {Helmet} from 'react-helmet'
-import {Link} from 'react-router-dom'
 
 
 const HomeScreen = (props) => {
@@ -37,13 +35,6 @@ const HomeScreen = (props) => {
     return (
        
         <div>
-            <Helmet>
-                <title>Welcome To Proshop | Home</title>
-                <meta name="descriptopn" content="We sell best products for cheap" />
-                <meta name="keywords" content="Electroinc, buy elctronics, cheap elctronics" />
-
-            </Helmet>
-            {!keyword ? <ProductCarsouel />: <Link to="/" className="btn btn-light">Go Back</Link> }
             <h1>Latest Products</h1>
            {loading ? (<Loader />): error ? (<Message variant="danger">{error}</Message>) : 
 

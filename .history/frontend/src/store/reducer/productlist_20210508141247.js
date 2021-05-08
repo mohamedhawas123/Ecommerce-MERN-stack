@@ -97,8 +97,8 @@ const reducer = (state=initialState, action) => {
         case actionTypes.PRODUCT_UPDATE_REVIEW_REST: return { product: {} }
 
 
-        case actionTypes.PRODUCT_TOP_REQUEST: return {loading: true, products :[]} 
-        case actionTypes.PRODUCT_TOP_SUCCESS : return {loading: false, products: action.payload }
+        case actionTypes.PRODUCT_TOP_REQUEST: return {loading: true} 
+        case actionTypes.PRODUCT_TOP_SUCCESS : return {loading: false, success: true }
         case actionTypes.PRODUCT_TOP_FAIL: return {loading:false, error:action.payload}
 
 
