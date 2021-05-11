@@ -7,8 +7,6 @@ import Message from '../components/Message'
 import {UserDetail, updateUser} from '../store/actions/user'
 import FormContainer from '../components/formcontainer'
 import {USER_UPDATE_ADMIN_REST} from '../store/actions/actionTypes'
-import axios from 'axios'
-
 
 const UserEditScreen = ({match, history}) => {
 
@@ -56,9 +54,9 @@ const UserEditScreen = ({match, history}) => {
         },
     }
 
-    const submitHandler = async (e) => {
+    const submitHandler = (e) => {
         e.preventDefault()
-        await axios.put(
+        axios.put(
             `/api/users/${userId}`, {name, email, isAdmin}, 
             config
         )

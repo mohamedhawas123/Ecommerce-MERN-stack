@@ -7,8 +7,6 @@ import Message from '../components/Message'
 import {UserDetail, updateUser} from '../store/actions/user'
 import FormContainer from '../components/formcontainer'
 import {USER_UPDATE_ADMIN_REST} from '../store/actions/actionTypes'
-import axios from 'axios'
-
 
 const UserEditScreen = ({match, history}) => {
 
@@ -49,24 +47,17 @@ const UserEditScreen = ({match, history}) => {
 
     }, [dispatch, history ,userId ,userDetail, success ])
 
-    const config = {
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${userDetaill.userInfo.token}`
-        },
-    }
-
-    const submitHandler = async (e) => {
+    const submitHandler = (e) => {
         e.preventDefault()
-        await axios.put(
-            `/api/users/${userId}`, {name, email, isAdmin}, 
-            config
-        )
+        dispatch(updateUser({
+            _id:userId,
+            name,email,isAdmin
+        }))
 
  
     }
 
-    
+    console.log(userId)
 
     return (
 

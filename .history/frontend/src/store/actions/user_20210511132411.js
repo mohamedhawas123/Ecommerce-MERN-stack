@@ -66,11 +66,11 @@ export const UserDetail = (id) =>  async (dispatch, getState) => {
         const config = {
             headers: {
                 
-                Authorization: `Bearer ${getState().user.userInfo.token}`
+                Authorization: `Bearer ${getState().user.userLogin.userInfo.token}`
             },
         }
     
-        const {data} = await axios.get(`/api/users/${id}`, config)
+        const {data} = await axios.get(`api/users/${id}`, config)
 
         console.log(data)
     
@@ -257,7 +257,7 @@ export const updateUser = (user) =>  async (dispatch, getState) => {
         const config = {
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${getState().user.userInfo.token}`
+                Authorization: `Bearer ${getState().user.userLogin.userInfo.token}`
             },
         }
     

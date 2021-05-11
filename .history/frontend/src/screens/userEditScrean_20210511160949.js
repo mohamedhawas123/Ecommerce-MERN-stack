@@ -56,9 +56,9 @@ const UserEditScreen = ({match, history}) => {
         },
     }
 
-    const submitHandler = async (e) => {
+    const submitHandler = (e) => {
         e.preventDefault()
-        await axios.put(
+        axios.put(
             `/api/users/${userId}`, {name, email, isAdmin}, 
             config
         )
