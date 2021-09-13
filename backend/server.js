@@ -62,4 +62,4 @@ app.use(notFound)
 
 app.use(errorHandler)
 
-app.listen(5000, console.log("server is running "))
+app.listen(process.env.PORT || 5000, console.log("server is running "))
